@@ -47,3 +47,9 @@
 + 2.迁移到Windows上
   > conda env create -f environment.yml
 + 3.修复调整差异导致的问题
+
+
+
++ 取消代理
+  + conda config --remove proxy_servers.http
+  + conda config --remove proxy_servers.https
