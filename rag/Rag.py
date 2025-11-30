@@ -87,13 +87,13 @@ class Rag:
 
 if __name__ == '__main__':
     properties = Config.all_config()
-    rag = Rag("sample.md", properties['hf_hub_token'], properties['embedding_model_name'])
-    print(rag)
+    rag = Rag("sample.md", properties['HF_HUB_TOKEN'], properties['EMBEDDING_MODEL_NAME'])
     print("分片===================")
     # 分片
     sections = rag.split_into_chunks()
     for i, r in enumerate(sections):
         print(f"[{i}] {r}\n")
+    print("向量化分片===================")
     # 向量化
     embeddings = [rag.chunk_to_embed(chunk) for chunk in sections]
     # 存储到向量数据库

@@ -1,3 +1,44 @@
+# agent开发
+
+### 如何下载安装包
++ 使用pip
+  ```shell
+  #安装包（默认是最新版）
+  pip install langchain
+  #指定版本
+  pip install langchain=0.3.7
+  #批量安装
+  pip install langchain requests numpy
+  #升级包
+  pip install --upgrade langchain
+  #卸载包
+  pip uninstall langchain
+  #查看已安装包
+  pip list
+  #镜像加速
+  pip install -i https://mirrors.aliyun.com/pypi/simple langchain
+  #从本地安装
+  pip install ./local_package.whl
+  pip install https://github.com/user/repo/archive/main.zip
+  ```
++ 使用conda
+  ```shell
+  #安装包（默认仓库）
+  conda install langchain
+  #指定频道（如 conda-forge)
+  conda install -c conda-forge langchain=0.3.7
+  #更新包
+  conda update langchain
+  #卸载包
+  conda uninstall langchain
+  #查看已安装包
+  conda list
+  ```
+  > -c: 是--channel都缩写  
+  > 二者最好不要混用，推荐先用conda，后pip补充
+  
+
+
 
 
 + jupyter如果需要使用uv安装的包的话
@@ -48,8 +89,36 @@
   > conda env create -f environment.yml
 + 3.修复调整差异导致的问题
 
++ 配置代理
+  + .condarc文件
+  + proxies: 注意是proxies
+
++ torch，numpy版本问题
+  ```pycon
+  conda install pytorch torchvision torchaudio -c pytorch
+  ```
+
++ PyTorch 在 Mac MPS（Metal Performance Shaders）后端的显存不足错误
+  ```shell
+  #方式一
+  export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
+  #方式二 
+  import os
+  os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
+  注意：要写在 import torch 之前。
+  ```
 
 
-+ 取消代理
-  + conda config --remove proxy_servers.http
-  + conda config --remove proxy_servers.https
+
+
+### LangChain
+```
+LangChain是一个帮助你构建LLM应用到 全套工具集。涉及prompt构建、LLM接入、记忆管理、工具调用、Rag、智能体开发等
+```
+
+
+
+
+
+
++ [视频地址](https://www.bilibili.com/video/BV1ZppNzHEY4?spm_id_from=333.788.player.switch&vd_source=26a4c9cd3b93c3c6110a2ce9403ca5ea&p=3)
